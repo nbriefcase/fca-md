@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  mysql:
+    ports:
+      - '13306:3306'
+    container_name: mysql-docker-local
+    environment:
+      - MYSQL_ROOT_PASSWORD=Password
+    image: 'mysql:latest'
+    volumes:
+      - dbdata:/var/lib/mysql
+
+volumes:
+  dbdata:
+    driver: local
