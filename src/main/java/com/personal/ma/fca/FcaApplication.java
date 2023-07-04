@@ -19,7 +19,7 @@ public class FcaApplication {
     }
 
 
-    @Bean
+    //@Bean
     public CommandLineRunner commandLineRunner(AuthenticationService service) {
         return args -> {
             var admin = RegisterRequest.builder()

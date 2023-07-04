@@ -47,15 +47,6 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->
-        <!--		<dependency>-->
-        <!--			<groupId>io.jsonwebtoken</groupId>-->
-        <!--			<artifactId>jjwt</artifactId>-->
-        <!--			<version>0.9.1</version>-->
-        <!--		</dependency>-->
-
-
-        <!--		https://github.com/ali-bouali/spring-boot-3-jwt-security/blob/main/pom.xml-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
@@ -71,13 +62,7 @@
             <artifactId>jjwt-jackson</artifactId>
             <version>0.11.5</version>
         </dependency>
-        <!--             -->
 
-        <!--        <dependency>-->
-        <!--            <groupId>jakarta.xml.bind</groupId>-->
-        <!--            <artifactId>jakarta.xml.bind-api</artifactId>-->
-        <!--            <version>4.0.0</version>-->
-        <!--        </dependency>-->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
