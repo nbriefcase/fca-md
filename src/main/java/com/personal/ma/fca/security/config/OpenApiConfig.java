@@ -13,9 +13,9 @@ import io.swagger.v3.oas.annotations.servers.Server;
 @OpenAPIDefinition(
         info = @Info(
                 contact = @Contact(
-                        name = "Alibou",
-                        email = "contact@aliboucoding.com",
-                        url = "https://aliboucoding.com/course"
+                        name = "Administrator",
+                        email = "contact@some-domain.com",
+                        url = "https://some-url.com"
                 ),
                 description = "OpenApi documentation for Spring Security",
                 title = "OpenApi specification - Alibou",
@@ -33,7 +33,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
                 ),
                 @Server(
                         description = "PROD ENV",
-                        url = "https://aliboucoding.com/course"
+                        url = "https://some-url.com"
                 )
         },
         security = {
