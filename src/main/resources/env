@@ -1,0 +1,7 @@
+JWT_REFRESH_TOKEN_EXPIRATION_MS=604800000
+JWT_TOKEN_EXPIRATION_MS=86400000
+JWT_SECRET_KEY=qfmt2eipps1asb6jlu422b78cksd63cg5rnpcn7ps9voqgptc2s9i17hcsc1rhgjivm7vp4sri9vrgmdfzsuym36n4txqrm5lip5e4bgvssaypnbsvdgovsjqto0g2ned6pr3wf2i2nqz5fr
+DB_USERNAME=root
+DB_PASSWORD=password
+DB_JDBC_URL=jdbc:mysql://localhost:13306/data?serverTimezone=UTC&autoReconnect=true&allowPublicKeyRetrieval=true&useSSL=false
+JPA_SHOW_SQL=false
