@@ -7,11 +7,18 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static com.personal.ma.fca.security.user.Permission.ADMIN_CREATE;
 import static com.personal.ma.fca.security.user.Permission.ADMIN_DELETE;
@@ -38,10 +45,22 @@ public class SecurityConfiguration {
     private final AuthenticationProvider authenticationProvider;
     private final LogoutHandler logoutHandler;
 
+    //@Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200/", "http://127.0.0.1:4200/"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST"));
+        configuration.setAllowedHeaders(List.of("Authorization"));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(opt -> opt.disable())
+                .cors(opt -> opt.configurationSource(corsConfigurationSource()).configure(http))
+                .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> {
                     req.requestMatchers(
                             "/api/v1/auth/**",

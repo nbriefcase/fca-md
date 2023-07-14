@@ -1,10 +1,12 @@
 package com.personal.ma.fca.security.user;
 
+import com.personal.ma.fca.controller.model.DtoUser;
 import com.personal.ma.fca.security.token.Token;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -18,6 +20,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 @Data
 @Builder
@@ -35,11 +38,12 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String email;
     private String password;
+    private boolean isEnable;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Token> tokens;
 
     @Override
@@ -74,6 +78,18 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return this.isEnable;
+    }
+
+    public DtoUser toDto(){
+        return DtoUser.builder()
+                .id(getId())
+                .username(getUsername())
+                .firstname(getFirstname())
+                .lastname(getLastname())
+                .email(getEmail())
+                .role(Objects.isNull(getRole()) ? "" : getRole().name())
+                .isActive(isEnabled())
+                .build();
     }
 }
