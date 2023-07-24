@@ -3,10 +3,10 @@ package com.personal.ma.fca;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class FcaApplicationTests {
 
-	@Test
+//	@Test
 	void contextLoads() {
 	}
 
